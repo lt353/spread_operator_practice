@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import ToDoItem from "./TodoListItem";
+import ToDoItem from "./TodoItem";
+import InputArea from "./InputArea";
 
 function App() {
-  const [inputText, setInputText] = useState("");
+  
   const [items, setItems] = useState([]);
 
-  function handleChange(event) {
-    const newValue = event.target.value;
-    setInputText(newValue);
-  }
-
-  function addItem() {
+  function addItem(inputText) {
     setItems((prevItems) => {
       return [...prevItems, inputText];
     })
-    setInputText("");
   }
 
   function deleteItem(id) {
@@ -31,17 +26,10 @@ function App() {
     <div className="container">
       <div className="heading">
         <h1>To-Do List</h1>
-      </div>
-      <div className="form">
-        <input 
-          value={inputText} 
-          onChange={handleChange}
-          type="text" 
-        />
-        <button onClick={addItem}>
-          <span>Add</span>
-        </button>
-      </div>
+      </div> 
+      <InputArea
+        onAdd={addItem} 
+      />
       <div>
         <ul>
           {items.map((todoItem, index) => (
@@ -61,8 +49,8 @@ function App() {
 export default App;
 
 
-/*This code is all for if all we wanted to do was strike through items
-when clicked I thought it would be easier for me to start fresh with the final setup*/
+// /*This code is all for if all we wanted to do was strike through items
+// when clicked I thought it would be easier for me to start fresh with the final setup*/
 // import React, { useState } from "react";
 // import ToDoItem from "./TodoListItem";
 
