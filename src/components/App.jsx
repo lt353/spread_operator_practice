@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ToDoItem from "./TodoItem";
+import ToDoItem from "./ToDoItem";
 import InputArea from "./InputArea";
 
 function App() {
